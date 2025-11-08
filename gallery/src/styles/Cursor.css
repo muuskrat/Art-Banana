@@ -1,0 +1,36 @@
+/* Custom Cursor Styles (Add this to your styles file) */
+
+/* 1. HIDES THE DEFAULT SYSTEM CURSOR */
+body, 
+.gallery-item, /* Optional: hide cursor on specific elements */
+.modal-backdrop,
+.modal-close-button {
+    cursor: none !important; 
+}
+
+/* Base style for the custom cursor elements */
+.cursor-point, .cursor-ball {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicks to pass through to elements beneath */
+    z-index: 9999; 
+    border-radius: 50%;
+    /* 2. CRITICAL: This CENTERS the element perfectly on the (x, y) coordinates provided by Framer Motion. */
+    transform: translate(-50%, -50%); 
+}
+
+/* The Point (immediate follow) */
+.cursor-point {
+    width: 4px;
+    height: 4px;
+    background-color: #333;
+}
+
+/* The Ball (trailing spring) */
+.cursor-ball {
+    width: 25px;
+    height: 25px;
+    background-color: #333;
+    border: 2px solid transparent; 
+}

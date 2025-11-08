@@ -1,0 +1,53 @@
+/* src/styles/IntroOverlay.css */
+
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Use a striking background color, black is classic for a fade to content */
+  background-color: #000000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Must be higher than all other content (e.g., the modal) */
+  color: white; /* Text color */
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* Space between title and circle */
+}
+
+.artist-name-title {
+  font-size: 4em; /* Large and prominent */
+  font-family: 'Georgia', serif; /* Match your Navbar's artistic style */
+  font-weight: 300; /* Lighter weight for a modern look */
+  margin: 0;
+  padding: 0;
+  letter-spacing: 2px;
+}
+
+.intro-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: white; /* White circle */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Subtle glow */
+  transition: all 0.3s ease;
+  overflow: hidden; /* Important for the evaporation effect */
+}
+
+.enter-text {
+    font-size: 1.2em;
+    color: #000000; /* Black text inside the white circle */
+    font-weight: bold;
+    user-select: none; /* Prevent text selection */
+}
