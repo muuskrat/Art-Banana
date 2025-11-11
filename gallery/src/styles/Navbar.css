@@ -1,0 +1,57 @@
+/* styles/Navbar.css */
+
+.navbar {
+    cursor: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Standard navbar height */
+    z-index: 100; /* Must be higher than everything else */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+    color: #b90707;
+}
+
+.nav-logo a {
+    font-size: 1.5em;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff9900;
+}
+
+/* Socials in Navbar */
+.navbar .nav-socials { 
+    display: flex;
+    gap: 10px; 
+    margin: 0;
+}
+
+.navbar .nav-social-item { 
+    font-size: 1em; 
+    color: #333;
+    cursor: pointer !important;
+    /* Optional: Add a hover glow here if desired */
+}

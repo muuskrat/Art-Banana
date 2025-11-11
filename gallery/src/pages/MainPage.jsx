@@ -1,11 +1,13 @@
 import React, { useState } from "react"
-import { FaInstagram, FaTwitter, FaEnvelope } from 'react-icons/fa';
-import { motion, useScroll, useTransform } from "framer-motion"
+// 🔑 IMPORT 'animate' HERE
+import { motion, useScroll, useTransform, animate } from "framer-motion"
+import { FaInstagram, FaTwitter, FaEnvelope } from 'react-icons/fa'; 
 
 // Component Imports
 import DetailModal from "../components/DetailModal"
 import CustomCursor from "../components/CustomCursor" 
 import ParticleBackground from "../components/ParticleBackground";
+import Navbar from "../components/Navbar"; 
 
 import "../styles/MainPage.css"
 
@@ -32,25 +34,13 @@ const IMAGES = [
     { src: "pictures/img3.png", span: 4, title: "The Quadruple", description: "A wide, panoramic experiment in texture.", scaleX: 1.4, scaleY: 2.4 },
 ];
 
-// Define social media links. Removed commented-out links for X/Twitter and Contact.
 const SOCIAL_LINKS = [
-  { 
-    name: 'Instagram', 
-    url: 'https://www.instagram.com/dannbo_/', 
-    Icon: FaInstagram 
-  },
-  /*
-  { 
-    name: 'X/Twitter', 
-    url: 'https://www.x.com/',
-    Icon: FaTwitter 
-  },
-  { 
-    name: 'Contact', 
-    url: '',
-    Icon: FaEnvelope 
-  },
-  */
+    { 
+        name: 'Instagram', 
+        url: 'https://www.instagram.com/dannbo_/', 
+        Icon: FaInstagram 
+    },
+    // Removed Twitter and Email to reflect original component
 ];
 
 //
@@ -84,20 +74,39 @@ export default function MainPage() {
         setSelectedImage(image)
     }
 
+    const handleScrollToGallery = (e) => {
+        e.preventDefault();
+
+        const galleryElement = document.getElementById('gallery');
+        if (!galleryElement) return;
+
+        const targetTop = galleryElement.offsetTop;
+        
+        animate(scrollY, targetTop, {
+            type: "spring",
+            stiffness: 120, 
+            damping: 15,    
+            onUpdate: (latest) => window.scrollTo(0, latest)
+        });
+    };
+
     // --- Render ---
     return (
         <>
             <CustomCursor isModalOpen={isModalOpen} />
+            <Navbar /> 
             
-            {/* Parallax Artist Name Header */}
+            {/* Parallax Artist Name Header (Now purely the Hero section) */}
             <motion.header 
-                className="parallax-header"
+                id="top"
+                className="hero-header" 
                 style={{ y: yText, opacity: opacityText, filter: filterText }}
             >
                 <ParticleBackground />
-                <h1>Dame Coonboy</h1>
-                <p>Curated Portfolio</p>
-                <div className="nav-socials">
+                <h1>Dane Conboy</h1>
+                <p>Art Portfolio</p>
+                
+                <div className="nav-socials hero-socials">
                     {SOCIAL_LINKS.map((link) => (
                         <motion.a 
                             key={link.name}
@@ -124,10 +133,23 @@ export default function MainPage() {
                         </motion.a>
                     ))}
                 </div>
+                
+                {/* 🔑 MOVED: The gallery link is now below the social links */}
+                <motion.a
+                    href="#gallery"
+                    className="hero-gallery-link"
+                    onClick={handleScrollToGallery}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                >
+                    View Gallery &darr;
+                </motion.a>
+
             </motion.header>
             
             {/* Gallery Content Wrap */}
             <motion.div 
+                id="gallery"
                 className="content-wrap"
                 style={{ y: yGallery }} 
             >

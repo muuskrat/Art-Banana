@@ -16,26 +16,32 @@
 
 /*
 |--------------------------------------------------------------------------
-|  Parallax Header & Navigation
+|  Parallax Header (Hero Section)
 |--------------------------------------------------------------------------
-| Styles for the full-screen header, particle background, and social links.
+| Styles for the full-screen hero section.
 */
 
-.parallax-header {
+.hero-header { /* Renamed from .header */
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #c5c3c3;
+    /* --- 🎨 ADDED GRADIENT HERE --- */
+    background: linear-gradient(
+        to bottom, 
+        #222222 0%, /* Dark grey/black at the top */
+        #440000 50%, /* Dark red in the middle */
+        #c5c3c3 100% /* Light gray at the bottom, matching original background */
+    );
+    /* background-color: #c5c3c3; <--- OLD SOLID COLOR (commented or removed) */
     color: #b90707;
     position: relative;
     z-index: 10;
     padding-bottom: 50px;
 }
-
-.parallax-header h1 {
+.hero-header h1 {
     font-size: 5em;
     font-weight: 300;
     margin: 0;
@@ -43,24 +49,51 @@
     font-family: 'Times New Roman', serif;
 }
 
-.parallax-header p {
+.hero-header p {
     font-size: 1.5em;
     margin-top: 10px;
     font-style: italic;
     opacity: 0.7;
 }
 
-/* Social Navigation Links */
-.nav-socials {
+.hero-gallery-link {
+    font-size: 1.5em;
+    margin-top: 30px; /* More spacing than the 'Art Portfolio' text */
+    font-style: italic;
+    opacity: 0.8;
+    color: #000000; /* Matches the H1 color */
+    text-decoration: none;
+    cursor: none !important; 
+    /* UPDATED: Added a light outline and adjusted the padding for the outline */
+    border: 10px solid rgba(185, 7, 7, 0); /* Light red outline */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 10px 20px;
+
+    
+    
+    /* Ensure the existing hover border is transparent when not hovered */
+    
+    transition: all 0.5s ease; /* Transition 'all' for smoother hover */
+}
+
+.hero-gallery-link:hover {
+    opacity: 1;
+    border-color: #b9070700; /* Underline effect on hover */
+    color: #e88b00;
+    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 140, 0, 0.4));
+    
+}
+
+.hero-socials { /* New class name for the hero header's socials */
     display: flex;
     gap: 20px;
     margin-top: 20px;
 }
 
-.nav-social-item {
+.hero-socials .nav-social-item {
     color: #333;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.5em; /* Large size, size=50 in JSX is important too */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,10 +103,11 @@
     transition: filter 0.3s ease-out;
 }
 
-.nav-social-item:hover {
+.hero-socials .nav-social-item:hover {
     filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 140, 0, 0.4));
     color: #ff9900;
 }
+
 
 /*
 |--------------------------------------------------------------------------
@@ -84,8 +118,11 @@
 
 .content-wrap {
     position: relative;
-    z-index: 20; /* Ensures the content slides over the header text */
+    z-index: 20; /* Ensures the content slides over the hero header text */
     background-color: white;
+    /* 🎨 ADDED SOFT BORDER/SEPARATOR HERE */
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2); /* Shadow pointing upwards */
+    /* Alternative soft border: border-top: 1px solid rgba(0, 0, 0, 0.1); */
 }
 
 .gallery-container {
@@ -110,7 +147,10 @@
     aspect-ratio: var(--aspect-default);
     overflow: hidden; /* Critical for scaling text */
     border-radius: 0;
+    cursor: none !important; /* Retained for CustomCursor integration */
 }
+
+
 
 /* Dynamic aspect ratios based on grid span */
 .gallery-item[style*="span 2"] {
@@ -161,12 +201,17 @@
     opacity: 0.8;
     font-family: 'Arial Black', 'Impact', sans-serif;
     line-height: 1;
+    transition: opacity 0.5s ease;
 }
 
 .gallery-item-text-scale {
     font-size: 8vw;
     white-space: nowrap;
     transform-origin: center center;
+}
+
+.gallery-item:hover .gallery-item-title {
+    opacity: 0;
 }
 
 /*
