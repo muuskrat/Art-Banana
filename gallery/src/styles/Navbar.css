@@ -14,6 +14,10 @@
     padding: 0 40px;
     box-sizing: border-box;
     color: #b90707;
+    opacity: .5;
+    
+
+    
 }
 
 .nav-logo a {
@@ -52,6 +56,6 @@
 .navbar .nav-social-item { 
     font-size: 1em; 
     color: #333;
-    cursor: pointer !important;
+    
     /* Optional: Add a hover glow here if desired */
 }

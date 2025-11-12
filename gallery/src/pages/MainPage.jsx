@@ -1,13 +1,17 @@
 import React, { useState } from "react"
+
 // 🔑 IMPORT 'animate' HERE
 import { motion, useScroll, useTransform, animate } from "framer-motion"
 import { FaInstagram, FaTwitter, FaEnvelope } from 'react-icons/fa'; 
+
 
 // Component Imports
 import DetailModal from "../components/DetailModal"
 import CustomCursor from "../components/CustomCursor" 
 import ParticleBackground from "../components/ParticleBackground";
 import Navbar from "../components/Navbar"; 
+import ScrollVelocity from '../components/ScrollVelocity';
+
 
 import "../styles/MainPage.css"
 
@@ -42,6 +46,8 @@ const SOCIAL_LINKS = [
     },
     // Removed Twitter and Email to reflect original component
 ];
+
+
 
 //
 // MAIN COMPONENT
@@ -96,14 +102,21 @@ export default function MainPage() {
             <CustomCursor isModalOpen={isModalOpen} />
             <Navbar /> 
             
+            
             {/* Parallax Artist Name Header (Now purely the Hero section) */}
             <motion.header 
                 id="top"
                 className="hero-header" 
                 style={{ y: yText, opacity: opacityText, filter: filterText }}
-            >
+            >   
                 <ParticleBackground />
-                <h1>Dane Conboy</h1>
+                <h1>
+                <ScrollVelocity
+                    texts={['Dane Dane Dane Dane', 'Conboy Conboy Conboy']} 
+                    
+                    className="custom-scroll-text"
+                />
+                </h1>
                 <p>Art Portfolio</p>
                 
                 <div className="nav-socials hero-socials">

@@ -32,11 +32,11 @@
     background: linear-gradient(
         to bottom, 
         #222222 0%, /* Dark grey/black at the top */
-        #440000 50%, /* Dark red in the middle */
-        #c5c3c3 100% /* Light gray at the bottom, matching original background */
+        /* Dark red in the middle */
+        #525252 100% /* Light gray at the bottom, matching original background */
     );
     /* background-color: #c5c3c3; <--- OLD SOLID COLOR (commented or removed) */
-    color: #b90707;
+    color: #000000;
     position: relative;
     z-index: 10;
     padding-bottom: 50px;
@@ -47,13 +47,21 @@
     margin: 0;
     letter-spacing: 5px;
     font-family: 'Times New Roman', serif;
+    font-style: italic;
+    color: #e88b00;
+    /* text-shadow: #222 1px 1px 2px; */
+    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 140, 0, 0.4));
+    
+    
 }
 
 .hero-header p {
     font-size: 1.5em;
     margin-top: 10px;
-    font-style: italic;
+    
     opacity: 0.7;
+    color: #e88b00;
+    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 140, 0, 0.4));
 }
 
 .hero-gallery-link {
@@ -61,7 +69,7 @@
     margin-top: 30px; /* More spacing than the 'Art Portfolio' text */
     font-style: italic;
     opacity: 0.8;
-    color: #000000; /* Matches the H1 color */
+    color: #c4c4c4; /* Matches the H1 color */
     text-decoration: none;
     cursor: none !important; 
     /* UPDATED: Added a light outline and adjusted the padding for the outline */
@@ -91,7 +99,7 @@
 }
 
 .hero-socials .nav-social-item {
-    color: #333;
+    color: #c4c4c4;
     text-decoration: none;
     font-size: 1.5em; /* Large size, size=50 in JSX is important too */
     display: flex;
