@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
-// 🔑 IMPORT 'animate' HERE
+// 🔒 IMPORT 'animate' HERE
 import { motion, useScroll, useTransform, animate } from "framer-motion"
 import { FaInstagram, FaTwitter, FaEnvelope } from 'react-icons/fa'; 
 
@@ -63,6 +63,30 @@ export default function MainPage() {
     const [selectedImage, setSelectedImage] = useState(null)
     const isModalOpen = selectedImage !== null;
     
+    // --- Responsive Scale Factor ---
+    const [scaleMultiplier, setScaleMultiplier] = useState(1);
+    
+    useEffect(() => {
+        const updateScaleMultiplier = () => {
+            const width = window.innerWidth;
+            if (width <= 480) {
+                setScaleMultiplier(1.8);
+            } else if (width <= 768) {
+                setScaleMultiplier(1.5);
+            } else if (width <= 1024) {
+                setScaleMultiplier(1.3);
+            } else if (width <= 1440) {
+                setScaleMultiplier(1.15);
+            } else {
+                setScaleMultiplier(1);
+            }
+        };
+        
+        updateScaleMultiplier();
+        window.addEventListener('resize', updateScaleMultiplier);
+        return () => window.removeEventListener('resize', updateScaleMultiplier);
+    }, []);
+    
     // --- Framer Motion Scroll Hooks ---
     const { scrollY } = useScroll();
 
@@ -111,11 +135,7 @@ export default function MainPage() {
             >   
                 <ParticleBackground />
                 <h1>
-                <ScrollVelocity
-                    texts={['Dane Dane Dane Dane', 'Conboy Conboy Conboy']} 
-                    
-                    className="custom-scroll-text"
-                />
+                Dane Conboy
                 </h1>
                 <p>Art Portfolio</p>
                 
@@ -147,16 +167,8 @@ export default function MainPage() {
                     ))}
                 </div>
                 
-                {/* 🔑 MOVED: The gallery link is now below the social links */}
-                <motion.a
-                    href="#gallery"
-                    className="hero-gallery-link"
-                    onClick={handleScrollToGallery}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                >
-                    View Gallery &darr;
-                </motion.a>
+                {/* 🔒 MOVED: The gallery link is now below the social links */}
+
 
             </motion.header>
             
@@ -173,7 +185,7 @@ export default function MainPage() {
                             className="gallery-item"
                             style={{ gridColumn: `span ${img.span}` }}
                             onClick={() => handleImageClick(img)}
-                            whileHover={{ scale: 1.02 }}
+                            whileHover={{ scale: 1.02, zIndex: 50 }}
                             whileTap={{ scale: 0.98 }}
                         >
                             <img src={img.src} alt={`img-${i}`} />
@@ -181,7 +193,7 @@ export default function MainPage() {
                                 <div 
                                     className="gallery-item-text-scale"
                                     style={{
-                                        transform: `scale(${img.scaleX}, ${img.scaleY})`
+                                        transform: `scale(${img.scaleX}, ${img.scaleY * scaleMultiplier})`
                                     }}
                                 >
                                     {img.title}

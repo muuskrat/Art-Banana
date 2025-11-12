@@ -22,9 +22,10 @@ body,
 
 /* The Point (immediate follow) */
 .cursor-point {
-    width: 4px;
-    height: 4px;
-    background-color: #333;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    z-index: 10000;
 }
 
 /* The Ball (trailing spring) */

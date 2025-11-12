@@ -22,7 +22,7 @@
 */
 
 .hero-header { /* Renamed from .header */
-    height: 100vh;
+    height: 40vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -31,9 +31,9 @@
     /* --- 🎨 ADDED GRADIENT HERE --- */
     background: linear-gradient(
         to bottom, 
-        #222222 0%, /* Dark grey/black at the top */
+        #222222 0%, /* Dark grey/black at the top #0D1F2D*/
         /* Dark red in the middle */
-        #525252 100% /* Light gray at the bottom, matching original background */
+        #656565 100% /* Light gray at the bottom, matching original background #7E7F83*/
     );
     /* background-color: #c5c3c3; <--- OLD SOLID COLOR (commented or removed) */
     color: #000000;
@@ -210,12 +210,14 @@
     font-family: 'Arial Black', 'Impact', sans-serif;
     line-height: 1;
     transition: opacity 0.5s ease;
+    
 }
 
 .gallery-item-text-scale {
     font-size: 8vw;
     white-space: nowrap;
     transform-origin: center center;
+
 }
 
 .gallery-item:hover .gallery-item-title {
@@ -308,4 +310,47 @@
 .modal-info-panel .details {
     font-size: 0.9em;
     color: #888;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ðŸ" Base & Global Variables
+|--------------------------------------------------------------------------
+| Define root-level variables, aspect ratios, and resets.
+*/
+
+
+/* Responsive aspect ratios for smaller screens */
+@media (max-width: 1440px) {
+    :root {
+        --aspect-default: 1.5 / 1;
+        --aspect-2: 3 / 1;
+        --aspect-3: 4.5 / 1;
+        --aspect-4: 6 / 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --aspect-default: 1.2 / 1;
+        --aspect-2: 2.4 / 1;
+        --aspect-3: 3.6 / 1;
+        --aspect-4: 4.8 / 1;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --aspect-default: 1 / 1;
+        --aspect-2: 2 / 1;
+        --aspect-3: 3 / 1;
+        --aspect-4: 4 / 1;
+    }
+    .hero-header { /* Renamed from .header */
+    height: 30vh;
+    }
+    .hero-header h1 {
+    font-size: 4em;
+    }
 }

@@ -76,15 +76,17 @@ export default function CustomCursor({ isModalOpen }) {
         default: { 
             scale: 1, 
             opacity: 1,
-            backgroundColor: "#333",
-            borderWidth: "0px",
+            // Changed from solid fill to transparent background with a border
+            backgroundColor: "rgba(0,0,0,0)",
+            borderWidth: "1px",
+            borderColor: "#ffffff69",
             transition: { type: 'tween', duration: 0.3 }
         },
         hover: { 
-            scale: 1.2,
-            backgroundColor: "rgba(0,0,0,0)",
+            scale: 1.7,
+            backgroundColor: "rgba(255, 255, 255, 0.34)",
             borderWidth: "2px",
-            borderColor: "#333",
+            borderColor: "#02020298",
             transition: { type: 'tween', duration: 0.3 }
         },
         click: {

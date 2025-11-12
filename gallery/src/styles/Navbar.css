@@ -1,61 +1,90 @@
 /* styles/Navbar.css */
 
 .navbar {
-    cursor: none !important;
+    cursor: none;;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 60px; /* Standard navbar height */
     z-index: 100; /* Must be higher than everything else */
-    display: flex;
-    justify-content: space-between;
+    
+    /* 🔑 NEW: CSS Grid for Left-Center-Right Layout */
+    display: grid; 
+    /* 1fr: Logo on left, auto: Home/Gallery centered, 1fr: Socials on right */
+    grid-template-columns: 1fr auto 1fr; 
     align-items: center;
-    padding: 0 40px;
+    
+    /* Slightly wider padding for a 'slightly centered' look and responsiveness */
+    padding: 0 5vw; 
     box-sizing: border-box;
-    color: #b90707;
+    color: #ff9900;
     opacity: .5;
-    
-
-    
 }
 
 .nav-logo a {
+    cursor: none !important;
     font-size: 1.5em;
     font-weight: 600;
     text-decoration: none;
     color: inherit;
     font-family: 'Times New Roman', serif;
     letter-spacing: 1px;
+    font-style: italic;
 }
 
-.nav-links {
+/* 🔑 NEW: Center Links Wrapper */
+.nav-center {
+    cursor: none !important;
+    /* Ensures Home and Gallery are grouped and centered in the auto column */
     display: flex;
     gap: 30px;
+    /* Optional: Center the content within the column's cell */
+    justify-self: center; 
 }
 
-.nav-links a {
+/* Updated selector to target links within the new center wrapper */
+.nav-center a {
+    cursor: none !important;
     color: #333;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 500;
     transition: color 0.3s ease;
+    
 }
 
-.nav-links a:hover {
+.nav-center a:hover {
     color: #ff9900;
+    
 }
+
 
 /* Socials in Navbar */
 .navbar .nav-socials { 
+    cursor: none !important;
     display: flex;
-    gap: 10px; 
+    gap: 15px; /* Increased gap slightly for better visual separation of the glow */
     margin: 0;
+    justify-self: flex-end;
 }
 
 .navbar .nav-social-item { 
-    font-size: 1em; 
-    color: #333;
+    cursor: none !important;
+    font-size: 1.8em; /* Slightly increased size for visibility of the glow */
+    color: #040404; /* Base color for the icons (matching your name/logo color) */
+    transition: all 0.3s ease-in-out; /* Add transition for smooth glow effect */
+}
+
+/* 🌟 NEW: Glow effect on hover 🌟 */
+.navbar .nav-social-item:hover { 
+    color: #ff9900; /* Change icon color to a glowing color */
     
-    /* Optional: Add a hover glow here if desired */
+    /* Create a soft, spreading glow using box-shadow:
+    0 0 5px <color>, 0 0 15px <color>, 0 0 20px <color>
+    */
+    text-shadow: 
+        0 0 5px #ff9900, 
+        0 0 15px #ff9900, 
+        0 0 20px #ff9900;
 }
