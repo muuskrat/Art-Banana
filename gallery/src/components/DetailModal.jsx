@@ -40,7 +40,7 @@ export default function DetailModal({ selectedImage, setSelectedImage }) {
               <p>{selectedImage.description}</p>
               <hr />
               <p className="details">Source: {selectedImage.src}</p>
-              <p className="details">Span Size: {selectedImage.span}</p>
+              {/*<p className="details">Span Size: {selectedImage.span}</p>*/}
             </div>
           </motion.div>
         </motion.div>

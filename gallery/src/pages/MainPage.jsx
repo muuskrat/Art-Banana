@@ -70,13 +70,13 @@ export default function MainPage() {
         const updateScaleMultiplier = () => {
             const width = window.innerWidth;
             if (width <= 480) {
-                setScaleMultiplier(1.8);
+                setScaleMultiplier(2.05);
             } else if (width <= 768) {
-                setScaleMultiplier(1.5);
+                setScaleMultiplier(2.05);
             } else if (width <= 1024) {
-                setScaleMultiplier(1.3);
+                setScaleMultiplier(1.7);
             } else if (width <= 1440) {
-                setScaleMultiplier(1.15);
+                setScaleMultiplier(1.4);
             } else {
                 setScaleMultiplier(1);
             }
@@ -203,10 +203,11 @@ export default function MainPage() {
                     ))}
                 </div>
             </motion.div>      
-            
+
+            {/* EDIT HERE FOR SUB TEXT OF IMAGE */}
             <DetailModal 
                 selectedImage={selectedImage} 
-                setSelectedImage={setSelectedImage} 
+                {/*setSelectedImage={setSelectedImage} */}
             />
         </>
     )
