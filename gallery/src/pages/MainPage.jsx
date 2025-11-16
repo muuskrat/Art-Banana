@@ -9,7 +9,7 @@ import { FaInstagram, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import DetailModal from "../components/DetailModal"
 import CustomCursor from "../components/CustomCursor" 
 import ParticleBackground from "../components/ParticleBackground";
-import Navbar from "../components/Navbar"; 
+import Navbar from "../components/Navbar.jsx";
 
 
 import "../styles/MainPage.css"
