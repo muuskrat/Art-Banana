@@ -207,7 +207,7 @@ export default function MainPage() {
             {/* EDIT HERE FOR SUB TEXT OF IMAGE */}
             <DetailModal 
                 selectedImage={selectedImage} 
-                {/*setSelectedImage={setSelectedImage} */}
+                //{/*setSelectedImage={setSelectedImage} */}
             />
         </>
     )
